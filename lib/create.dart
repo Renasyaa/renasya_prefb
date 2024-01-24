@@ -54,6 +54,7 @@ class _CreateState extends State<Create> {
               }
             },
             icon: const Icon(SimpleIcons.github),
+            iconSize: 25,
           )
         ],
       ),

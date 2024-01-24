@@ -53,6 +53,7 @@ class Homeview extends StatelessWidget {
               }
             },
             icon: const Icon(SimpleIcons.github),
+            iconSize: 25,
           )
         ],
       ),

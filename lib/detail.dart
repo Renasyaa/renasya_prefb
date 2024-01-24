@@ -51,6 +51,7 @@ class Detail extends StatelessWidget {
               }
             },
             icon: const Icon(SimpleIcons.github),
+            iconSize: 25,
           )
         ],
       ),

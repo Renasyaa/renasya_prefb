@@ -28,8 +28,11 @@ class _FirestoreXState extends State<FirestoreX> {
                 setState(() {});
               },
               // ignore: sort_child_properties_last
-              child: const Icon(Icons.refresh_sharp),
-              backgroundColor: Colors.brown[900]),
+              child: Icon(
+                Icons.refresh_sharp,
+                color: Colors.brown[50],
+              ),
+              backgroundColor: Colors.brown[700]),
           const SizedBox(
             height: 10,
           ),
@@ -43,8 +46,11 @@ class _FirestoreXState extends State<FirestoreX> {
               );
             },
             // ignore: sort_child_properties_last
-            child: const Icon(Icons.add),
-            backgroundColor: Colors.brown[900],
+            child: Icon(
+              Icons.add,
+              color: Colors.brown[50],
+            ),
+            backgroundColor: Colors.brown[700],
           )
         ],
       ),
@@ -86,10 +92,54 @@ class _FirestoreXState extends State<FirestoreX> {
                 await launchUrl(url);
               }
             },
-            icon: const Icon(SimpleIcons.github),
+            icon: const Icon(
+              SimpleIcons.github,
+            ),
+            iconSize: 25,
           )
         ],
       ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            FutureBuilder(
+              future: getColl(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  final length = snapshot.data!.docs.length;
+                  return Column(
+                    children: [
+                      ...List.generate(length, (index) {
+                        final id = snapshot.data!.docs[index].id;
+                        return Card(
+                          child: ListTile(
+                            tileColor: Colors.brown[900],
+                            textColor: Colors.brown[50],
+                            title: Text(snapshot.data!.docs[index]['nama']),
+                            subtitle: Text(id),
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Detail(id: id)),
+                              );
+                            },
+                          ),
+                        );
+                      })
+                    ],
+                  );
+                }
+                return const Center(child: Text(''));
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
       // appBar: AppBar(
       //   title: const Text('Reize'),
       //   titleTextStyle:
@@ -97,34 +147,6 @@ class _FirestoreXState extends State<FirestoreX> {
       //   backgroundColor: Colors.brown[900],
       //   // titleTextStyle: TextStyle actions: [],
       // ),
-      body: Column(
-        children: [
-          FutureBuilder(
-            future: getColl(),
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                final length = snapshot.data!.docs.length;
-                return Column(
-                  children: [
-                    ...List.generate(length, (index) {
-                      final id = snapshot.data!.docs[index].id;
-                      return Card(
-                        child: ListTile(
-                          tileColor: Colors.brown[900],
-                          textColor: Colors.brown[50],
-                          title: Text(snapshot.data!.docs[index]['nama']),
-                          subtitle: Text(id),
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Detail(id: id)),
-                            );
-                          },
-                        ),
-                      );
-                    })
-                  ],
-                );
                 // return Column(children: [
                 //   ...List.generate(
                 //       length, (index) {
@@ -157,10 +179,6 @@ class _FirestoreXState extends State<FirestoreX> {
 
                 //   // ),)
                 // ]);
-              }
-              return const Center(child: Text(''));
-            },
-          ),
           // OutlinedButton(
           //   onPressed: () {
           //     setState(
@@ -183,8 +201,3 @@ class _FirestoreXState extends State<FirestoreX> {
           //     return const Text('');
           //   },
           // )
-        ],
-      ),
-    );
-  }
-}
