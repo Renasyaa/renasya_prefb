@@ -1,23 +1,22 @@
-// import 'package:flutter/gestures.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_icons/simple_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void main() {
-  runApp(const Home());
+  runApp(const Homeview());
 }
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Homeview extends StatelessWidget {
+  const Homeview({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.brown[50],
       appBar: AppBar(
         backgroundColor: Colors.brown[900],
-        title:
-            // const Text('Coff(R)ize'),
-            RichText(
+        title: RichText(
           text: TextSpan(
               text: 'Coff',
               style: TextStyle(
@@ -57,8 +56,42 @@ class Home extends StatelessWidget {
           )
         ],
       ),
-      body: Scaffold(
-        body: Container(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            OutlinedButton(
+              onPressed: () async {
+                await FirebaseFirestore.instance.collection('cobasatu').doc('one').set({'nama': 'Rere', 'umur': 16});
+              },
+              child: const Text('Create'),
+            ),
+            OutlinedButton(
+              onPressed: () async {
+                final result = await FirebaseFirestore.instance.collection('cobasatu').get();
+                debugPrint(result.toString());
+                debugPrint(result.docs.toString());
+                debugPrint(result.docs[0].id.toString());
+                debugPrint(result.docs[0].data().toString());
+                debugPrint(result.docs[0].data().runtimeType.toString());
+                debugPrint(result.docs[0].data()['nama']);
+              },
+              child: const Text('Read'),
+            ),
+            OutlinedButton(
+              onPressed: () async {
+                await FirebaseFirestore.instance.collection('cobasatu').doc('one').update({'nama': 'Nana'});
+              },
+              child: const Text('Update'),
+            ),
+            OutlinedButton(
+              onPressed: () async {
+                await FirebaseFirestore.instance.collection('cobasatu').doc('one').delete();
+              },
+              child: const Text('Delete'),
+            ),
+          ],
+        ),
       ),
     );
   }

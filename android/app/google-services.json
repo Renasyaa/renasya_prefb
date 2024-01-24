@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "676994177431",
+    "project_id": "renasya-prefb",
+    "storage_bucket": "renasya-prefb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:676994177431:android:973ce980e8669070c74cd2",
+        "android_client_info": {
+          "package_name": "com.example.renasya_prefb"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRxL-sy39Hmt3LhVcxZb0an59BZk_Bdi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
