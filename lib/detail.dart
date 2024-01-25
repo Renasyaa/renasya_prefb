@@ -58,55 +58,96 @@ class Detail extends StatelessWidget {
       // appBar: AppBar(
       //   title: const Text('Detail'),
       // ),
-      body: FutureBuilder(
-        future: getDoc(id),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: Text('Loading...'));
-          }
-          if (snapshot.hasData) {
-            final x = snapshot.data!;
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.brown[900],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    margin: const EdgeInsets.all(10),
-                    child: Text(
-                      x['nama'],
-                      style: TextStyle(
-                        color: Colors.brown[100],
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
+      body: SingleChildScrollView(
+        child: FutureBuilder(
+          future: getDoc(id),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: Text(
+                  'Loading...',
+                  style: TextStyle(color: Colors.brown[900], fontWeight: FontWeight.bold, fontSize: 25),
+                ),
+              );
+            }
+            if (snapshot.hasData) {
+              final x = snapshot.data!;
+              // final x = snapshot.data!;
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.brown[900],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: const EdgeInsets.all(10),
+                      child: Text(
+                        x['nama'],
+                        style: TextStyle(
+                          color: Colors.brown[50],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Colors.brown[900],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text(
-                      x['umur'].toString(),
-                      style: TextStyle(
-                        color: Colors.brown[100],
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25,
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.brown[900],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: const EdgeInsets.all(10),
+                      child: Text(
+                        x['umur'].toString(),
+                        style: TextStyle(
+                          color: Colors.brown[50],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            );
-          }
-          return const Text('text');
-        },
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.brown[900],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: const EdgeInsets.all(10),
+                      child: Text(
+                        x['film'],
+                        style: TextStyle(
+                          color: Colors.brown[50],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.brown[900],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      margin: const EdgeInsets.all(10),
+                      child: Text(
+                        x['lagu'],
+                        style: TextStyle(
+                          color: Colors.brown[50],
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            }
+            return const Text('text');
+          },
+        ),
       ),
     );
   }

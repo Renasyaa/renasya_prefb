@@ -2,23 +2,26 @@ import 'dart:convert';
 
 class DetailModel {
   final String nama;
-  final String namaOrangTua;
+  final String film;
+  final String lagu;
   final int umur;
-
   DetailModel({
     this.nama = '',
-    this.namaOrangTua = '',
+    this.film = '',
+    this.lagu = '',
     this.umur = 0,
   });
 
   DetailModel copyWith({
     String? nama,
-    String? namaOrangTua,
+    String? film,
+    String? lagu,
     int? umur,
   }) {
     return DetailModel(
       nama: nama ?? this.nama,
-      namaOrangTua: namaOrangTua ?? this.namaOrangTua,
+      film: film ?? this.film,
+      lagu: lagu ?? this.lagu,
       umur: umur ?? this.umur,
     );
   }
@@ -27,7 +30,8 @@ class DetailModel {
     final result = <String, dynamic>{};
 
     result.addAll({'nama': nama});
-    result.addAll({'nama_orang_tua': namaOrangTua});
+    result.addAll({'film': film});
+    result.addAll({'lagu': lagu});
     result.addAll({'umur': umur});
 
     return result;
@@ -36,7 +40,8 @@ class DetailModel {
   factory DetailModel.fromMap(Map<String, dynamic> map) {
     return DetailModel(
       nama: map['nama'] ?? '',
-      namaOrangTua: map['nama_orang_tua'] ?? '',
+      film: map['film'] ?? '',
+      lagu: map['lagu'] ?? '',
       umur: map['umur']?.toInt() ?? 0,
     );
   }
@@ -46,15 +51,19 @@ class DetailModel {
   factory DetailModel.fromJson(String source) => DetailModel.fromMap(json.decode(source));
 
   @override
-  String toString() => 'DetailModel(nama: $nama, namaOrangTua: $namaOrangTua, umur: $umur)';
+  String toString() {
+    return 'DetailModel(nama: $nama, film: $film, lagu: $lagu, umur: $umur)';
+  }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is DetailModel && other.nama == nama && other.namaOrangTua == namaOrangTua && other.umur == umur;
+    return other is DetailModel && other.nama == nama && other.film == film && other.lagu == lagu && other.umur == umur;
   }
 
   @override
-  int get hashCode => nama.hashCode ^ namaOrangTua.hashCode ^ umur.hashCode;
+  int get hashCode {
+    return nama.hashCode ^ film.hashCode ^ lagu.hashCode ^ umur.hashCode;
+  }
 }

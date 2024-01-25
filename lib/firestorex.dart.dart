@@ -24,19 +24,6 @@ class _FirestoreXState extends State<FirestoreX> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
-              onPressed: () {
-                setState(() {});
-              },
-              // ignore: sort_child_properties_last
-              child: Icon(
-                Icons.refresh_sharp,
-                color: Colors.brown[50],
-              ),
-              backgroundColor: Colors.brown[700]),
-          const SizedBox(
-            height: 10,
-          ),
-          FloatingActionButton(
             onPressed: () {
               Navigator.push(
                 context,
@@ -51,7 +38,39 @@ class _FirestoreXState extends State<FirestoreX> {
               color: Colors.brown[50],
             ),
             backgroundColor: Colors.brown[700],
-          )
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          FloatingActionButton(
+              onPressed: () {
+                setState(() {});
+              },
+              // ignore: sort_child_properties_last
+              child: Icon(
+                Icons.refresh_sharp,
+                color: Colors.brown[50],
+              ),
+              backgroundColor: Colors.brown[700]),
+          const SizedBox(
+            height: 10,
+          ),
+          // FloatingActionButton(
+          //   onPressed: () {
+          //     Navigator.push(
+          //       context,
+          //       MaterialPageRoute(
+          //         builder: (context) => const Create(),
+          //       ),
+          //     );
+          //   },
+          //   // ignore: sort_child_properties_last
+          //   child: Icon(
+          //     Icons.add,
+          //     color: Colors.brown[50],
+          //   ),
+          //   backgroundColor: Colors.brown[700],
+          // )
         ],
       ),
       appBar: AppBar(
@@ -140,64 +159,3 @@ class _FirestoreXState extends State<FirestoreX> {
     );
   }
 }
-      // appBar: AppBar(
-      //   title: const Text('Reize'),
-      //   titleTextStyle:
-      //       TextStyle(fontWeight: FontWeight.bold, fontStyle: FontStyle.italic, fontSize: 35, color: Colors.brown[50]),
-      //   backgroundColor: Colors.brown[900],
-      //   // titleTextStyle: TextStyle actions: [],
-      // ),
-                // return Column(children: [
-                //   ...List.generate(
-                //       length, (index) {
-                //             final id = snapshot.data!.docs[index].id;
-                //           })
-                //   // ...List.generate(
-                //   //   length,
-                //   //   (index) => GestureDetector(
-                //   //     onTap: () {
-                //   //       setState(() {
-                //   //         id = snapshot.data!.docs[index].id;
-                //   //         getDoc();
-                //   //       });
-                //   //     },
-                //   //     child: Container(
-                //   //       margin: const EdgeInsets.all(10),
-                //   //       color: Colors.brown,
-                //   //       child: Row(
-                //   //         children: [
-                //   //           Text("${snapshot.data!.docs[index].id.toString()} = "),
-                //   //           const SizedBox(
-                //   //             width: 5,
-                //   //           ),
-                //   //           Text(
-                //   //             snapshot.data!.docs[index]['nama'].toString(),
-                //   //           ),
-                //   //         ],
-                //   //       ),
-                //   //     ),
-
-                //   // ),)
-                // ]);
-          // OutlinedButton(
-          //   onPressed: () {
-          //     setState(
-          //       () {
-          //         getColl();
-          //       },
-          //     );
-          //   },
-          //   child: const Text('Load More'),
-          // )
-          // FutureBuilder(
-          //   future: getDoc(),
-          //   builder: (context, snapshot) {
-          //     if (snapshot.connectionState == ConnectionState.waiting) {
-          //       return const Text('Loading...');
-          //     }
-          //     if (snapshot.hasData) {
-          //       return Text(snapshot.data!.data().toString());
-          //     }
-          //     return const Text('');
-          //   },
-          // )

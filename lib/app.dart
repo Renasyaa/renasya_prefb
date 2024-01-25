@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:renasya_prefb/firestorex.dart.dart';
-// import 'package:renasya_prefb/firestorex.dart.dart';
-// import 'package:renasya_prefb/home.dart';
-// import 'package:renasya_prefb/home.dart';
-// import 'package:renasya_prefb/home.dart';
 
 class App extends StatelessWidget {
   const App({super.key});

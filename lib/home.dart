@@ -63,7 +63,10 @@ class Homeview extends StatelessWidget {
           children: [
             OutlinedButton(
               onPressed: () async {
-                await FirebaseFirestore.instance.collection('cobasatu').doc('one').set({'nama': 'Rere', 'umur': 16});
+                await FirebaseFirestore.instance
+                    .collection('cobasatu')
+                    .doc('one')
+                    .set({'nama': 'Rere', 'umur': 16, 'film': 'spider', 'lagu': 'oursong'});
               },
               child: const Text('Create'),
             ),
@@ -81,7 +84,10 @@ class Homeview extends StatelessWidget {
             ),
             OutlinedButton(
               onPressed: () async {
-                await FirebaseFirestore.instance.collection('cobasatu').doc('one').update({'nama': 'Nana'});
+                await FirebaseFirestore.instance
+                    .collection('cobasatu')
+                    .doc('one')
+                    .update({'nama': 'Nana', 'umur': 15, 'film': 'man', 'lagu': 'you'});
               },
               child: const Text('Update'),
             ),
