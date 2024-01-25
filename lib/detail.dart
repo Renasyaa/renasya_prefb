@@ -45,6 +45,18 @@ class Detail extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () async {
+              Uri url = Uri.parse('https://console.firebase.google.com/project/renasya-prefb');
+              if (await canLaunchUrl(url)) {
+                await launchUrl(url);
+              }
+            },
+            icon: const Icon(
+              SimpleIcons.firebase,
+            ),
+            iconSize: 25,
+          ),
+          IconButton(
+            onPressed: () async {
               Uri url = Uri.parse('https://github.com/Renasyaa/renasya_prefb');
               if (await canLaunchUrl(url)) {
                 await launchUrl(url);
@@ -52,7 +64,7 @@ class Detail extends StatelessWidget {
             },
             icon: const Icon(SimpleIcons.github),
             iconSize: 25,
-          )
+          ),
         ],
       ),
       // appBar: AppBar(
