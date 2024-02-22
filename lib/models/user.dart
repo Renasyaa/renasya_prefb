@@ -1,28 +1,37 @@
 import 'dart:convert';
 
-class DetailModel {
+class UserX {
   final String nama;
   final String film;
   final String lagu;
+  final String id;
   final int umur;
-  DetailModel({
+  final String createAt;
+
+  UserX({
     this.nama = '',
     this.film = '',
     this.lagu = '',
+    this.id = '',
     this.umur = 0,
+    this.createAt = '',
   });
 
-  DetailModel copyWith({
+  UserX copyWith({
     String? nama,
     String? film,
     String? lagu,
+    String? id,
     int? umur,
+    String? createdAt,
   }) {
-    return DetailModel(
+    return UserX(
       nama: nama ?? this.nama,
       film: film ?? this.film,
       lagu: lagu ?? this.lagu,
+      id: id ?? this.id,
       umur: umur ?? this.umur,
+      createAt: createdAt ?? this.createAt,
     );
   }
 
@@ -32,38 +41,48 @@ class DetailModel {
     result.addAll({'nama': nama});
     result.addAll({'film': film});
     result.addAll({'lagu': lagu});
+    result.addAll({'id': id});
     result.addAll({'umur': umur});
+    result.addAll({'created_at': createAt});
 
     return result;
   }
 
-  factory DetailModel.fromMap(Map<String, dynamic> map) {
-    return DetailModel(
+  factory UserX.fromMap(Map<String, dynamic> map) {
+    return UserX(
       nama: map['nama'] ?? '',
       film: map['film'] ?? '',
       lagu: map['lagu'] ?? '',
+      id: map['id'] ?? '',
       umur: map['umur']?.toInt() ?? 0,
+      createAt: map['created_at'] ?? '',
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory DetailModel.fromJson(String source) => DetailModel.fromMap(json.decode(source));
+  factory UserX.fromJson(String source) => UserX.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'DetailModel(nama: $nama, film: $film, lagu: $lagu, umur: $umur)';
+    return 'UserX(nama: $nama, film: $film, lagu: $lagu, id: $id, umur: $umur, createdAt: $createAt)';
   }
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is DetailModel && other.nama == nama && other.film == film && other.lagu == lagu && other.umur == umur;
+    return other is UserX &&
+        other.nama == nama &&
+        other.film == film &&
+        other.lagu == lagu &&
+        other.id == id &&
+        other.umur == umur &&
+        other.createAt == createAt;
   }
 
   @override
   int get hashCode {
-    return nama.hashCode ^ film.hashCode ^ lagu.hashCode ^ umur.hashCode;
+    return nama.hashCode ^ film.hashCode ^ lagu.hashCode ^ id.hashCode ^ umur.hashCode ^ createAt.hashCode;
   }
 }

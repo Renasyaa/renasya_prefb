@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:renasya_prefb/data.dart';
+import 'package:renasya_prefb/models/user.dart';
 import 'package:renasya_prefb/ctrl.dart';
 import 'package:simple_icons/simple_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -11,19 +13,6 @@ class Create extends StatefulWidget {
 }
 
 class _CreateState extends State<Create> {
-  final ctrl1 = TextEditingController();
-
-  final ctrl2 = TextEditingController();
-
-  final ctrl3 = TextEditingController();
-  final ctrl4 = TextEditingController();
-
-  var itsLoading = false;
-  var isShowClear1 = false;
-  var isShowClear2 = false;
-  var isShowClear3 = false;
-  var isShowClear4 = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,6 +74,7 @@ class _CreateState extends State<Create> {
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               TextField(
@@ -300,16 +290,27 @@ class _CreateState extends State<Create> {
               // ),
               ElevatedButton(
                 onPressed: () async {
-                  final x = ctrl1.text;
-                  final y = int.parse(ctrl2.text);
-                  final a = ctrl3.text;
-                  final b = ctrl4.text;
-                  final data = {'nama': x, 'umur': y, 'lagu': a, 'film': b};
+                  final id = UniqueKey().toString();
+                  final valNama = ctrl1.text;
+                  final valUmur = int.parse(ctrl2.text);
+                  final valFilm = ctrl3.text;
+                  final valLagu = ctrl4.text;
+
+                  final newUser = UserX(
+                    // createAt: DateTime.now().toString(),
+                    createAt: DateTime.now().toString(),
+                    id: id,
+                    nama: valNama,
+                    umur: valUmur,
+                    film: valFilm,
+                    lagu: valLagu,
+                  );
+                  // final data = {'nama': valNama, 'umur': valUmur, 'lagu': valFilm, 'film': valLagu};
 
                   setState(() {
                     itsLoading = true;
                   });
-                  await create(data);
+                  await create(newUser.toMap());
                   setState(() {
                     itsLoading = false;
                   });

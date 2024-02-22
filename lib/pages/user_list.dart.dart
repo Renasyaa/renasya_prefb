@@ -1,21 +1,24 @@
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:renasya_prefb/create.dart';
+// import 'package:renasya_prefb/pages/create.dart';
 import 'package:renasya_prefb/ctrl.dart';
-import 'package:renasya_prefb/detail.dart';
+// import 'package:renasya_prefb/data.dart';
+import 'package:renasya_prefb/pages/user_detail.dart';
+import 'package:renasya_prefb/pages/user_input.dart';
+// import 'package:renasya_prefb/pages/detail.dart';
 import 'package:simple_icons/simple_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class FirestoreX extends StatefulWidget {
-  const FirestoreX({super.key});
+class UserList extends StatefulWidget {
+  const UserList({super.key});
 
   @override
-  State<FirestoreX> createState() => _FirestoreXState();
+  State<UserList> createState() => _UserListState();
 }
 
-var id = 'one';
+// var id = 'one';
 
-class _FirestoreXState extends State<FirestoreX> {
+class _UserListState extends State<UserList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,6 +27,7 @@ class _FirestoreXState extends State<FirestoreX> {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
+            heroTag: null,
             onPressed: () {
               Navigator.push(
                 context,
@@ -43,6 +47,7 @@ class _FirestoreXState extends State<FirestoreX> {
             height: 10,
           ),
           FloatingActionButton(
+              heroTag: null,
               onPressed: () {
                 setState(() {});
               },
@@ -139,17 +144,20 @@ class _FirestoreXState extends State<FirestoreX> {
               future: getColl(),
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  final length = snapshot.data!.docs.length;
+                  final length = snapshot.data!.length;
                   return Column(
                     children: [
                       ...List.generate(length, (index) {
-                        final id = snapshot.data!.docs[index].id;
+                        //* buat final data
+                        // final data = userList[index];
+                        final id = snapshot.data![index].id;
+                        final createAt = snapshot.data![index].createAt;
                         return Card(
                           child: ListTile(
                             tileColor: Colors.brown[900],
                             textColor: Colors.brown[50],
-                            title: Text(snapshot.data!.docs[index]['nama']),
-                            subtitle: Text(id),
+                            title: Text(snapshot.data![index].nama),
+                            subtitle: Text(createAt),
                             onTap: () {
                               Navigator.push(
                                 context,

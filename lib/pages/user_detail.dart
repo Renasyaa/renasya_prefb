@@ -97,7 +97,7 @@ class Detail extends StatelessWidget {
                       ),
                       margin: const EdgeInsets.all(10),
                       child: Text(
-                        x['nama'],
+                        x.nama,
                         style: TextStyle(
                           color: Colors.brown[50],
                           fontWeight: FontWeight.bold,
@@ -113,7 +113,7 @@ class Detail extends StatelessWidget {
                       ),
                       margin: const EdgeInsets.all(10),
                       child: Text(
-                        x['umur'].toString(),
+                        x.umur.toString(),
                         style: TextStyle(
                           color: Colors.brown[50],
                           fontWeight: FontWeight.bold,
@@ -129,7 +129,7 @@ class Detail extends StatelessWidget {
                       ),
                       margin: const EdgeInsets.all(10),
                       child: Text(
-                        x['film'],
+                        x.film,
                         style: TextStyle(
                           color: Colors.brown[50],
                           fontWeight: FontWeight.bold,
@@ -145,7 +145,7 @@ class Detail extends StatelessWidget {
                       ),
                       margin: const EdgeInsets.all(10),
                       child: Text(
-                        x['lagu'],
+                        x.lagu,
                         style: TextStyle(
                           color: Colors.brown[50],
                           fontWeight: FontWeight.bold,
@@ -157,7 +157,7 @@ class Detail extends StatelessWidget {
                 ),
               );
             }
-            return const Text('text');
+            return const Text('');
           },
         ),
       ),
