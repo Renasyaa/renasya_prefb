@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:renasya_prefb/data.dart';
+import 'package:renasya_prefb/ui_screen/users/data.dart';
 import 'package:renasya_prefb/models/user.dart';
-import 'package:renasya_prefb/ctrl.dart';
+import 'package:renasya_prefb/ui_screen/users/ctrl.dart';
 import 'package:simple_icons/simple_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -273,21 +273,6 @@ class _CreateState extends State<Create> {
               const SizedBox(
                 height: 20,
               ),
-              // ElevatedButton(
-              //     onPressed: () {
-              //       ctrl1.clear();
-              //       ctrl2.clear();
-              //       ctrl3.clear();
-              //       ctrl4.clear();
-              //     },
-              //     style: ElevatedButton.styleFrom(backgroundColor: Colors.brown[900]),
-              //     child: Text(
-              //       'Clear',
-              //       style: TextStyle(color: Colors.brown[50]),
-              //     )),
-              // const SizedBox(
-              //   height: 10,
-              // ),
               ElevatedButton(
                 onPressed: () async {
                   final id = UniqueKey().toString();
@@ -297,7 +282,6 @@ class _CreateState extends State<Create> {
                   final valLagu = ctrl4.text;
 
                   final newUser = UserX(
-                    // createAt: DateTime.now().toString(),
                     createAt: DateTime.now().toString(),
                     id: id,
                     nama: valNama,
@@ -305,7 +289,6 @@ class _CreateState extends State<Create> {
                     film: valFilm,
                     lagu: valLagu,
                   );
-                  // final data = {'nama': valNama, 'umur': valUmur, 'lagu': valFilm, 'film': valLagu};
 
                   setState(() {
                     itsLoading = true;

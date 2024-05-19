@@ -1,11 +1,7 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-// import 'package:renasya_prefb/pages/create.dart';
-import 'package:renasya_prefb/ctrl.dart';
-// import 'package:renasya_prefb/data.dart';
-import 'package:renasya_prefb/pages/user_detail.dart';
-import 'package:renasya_prefb/pages/user_input.dart';
-// import 'package:renasya_prefb/pages/detail.dart';
+import 'package:renasya_prefb/ui_screen/users/ctrl.dart';
+import 'package:renasya_prefb/ui_screen/users/widgets/user_detail.dart';
+import 'package:renasya_prefb/ui_screen/users/widgets/user_input.dart';
 import 'package:simple_icons/simple_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -60,22 +56,6 @@ class _UserListState extends State<UserList> {
           const SizedBox(
             height: 10,
           ),
-          // FloatingActionButton(
-          //   onPressed: () {
-          //     Navigator.push(
-          //       context,
-          //       MaterialPageRoute(
-          //         builder: (context) => const Create(),
-          //       ),
-          //     );
-          //   },
-          //   // ignore: sort_child_properties_last
-          //   child: Icon(
-          //     Icons.add,
-          //     color: Colors.brown[50],
-          //   ),
-          //   backgroundColor: Colors.brown[700],
-          // )
         ],
       ),
       appBar: AppBar(
